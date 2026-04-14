@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Github } from './services/github';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('tareas');
-  mi_var = "Holaineras"
+
+  github = inject(Github);
 }

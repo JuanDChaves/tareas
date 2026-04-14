@@ -1,26 +1,26 @@
 import { Routes } from '@angular/router';
-import { Bienvenida } from './bienvenida/bienvenida';
-import { Login } from './login/login';
-import { Registro } from './registro/registro';
-import { SobreMi } from './sobre-mi/sobre-mi';
-import { Error } from './error/error';
+import { Bienvenida } from './pages/bienvenida/bienvenida';
+import { Login } from './pages/login/login';
+import { Registro } from './pages/registro/registro';
+import { SobreMi } from './pages/sobre-mi/sobre-mi';
+import { Error } from './pages/error/error';
 
 export const routes: Routes = [
     {
         path: "bienvenida",
-        component: Bienvenida
+        loadComponent: () => import("./pages/bienvenida/bienvenida").then((archivo) => archivo.Bienvenida)
     }, 
     {
         path: "login",
-        component: Login
+        loadComponent: () => import("./pages/login/login").then((archivo) => archivo.Login)
     }, 
     {
         path: "registro",
-        component: Registro
+        loadComponent: () => import("./pages/registro/registro").then((archivo) => archivo.Registro)
     }, 
     {
         path: "sobre-mi",
-        component: SobreMi
+        loadComponent: () => import("./pages/sobre-mi/sobre-mi").then((archivo) => archivo.SobreMi)
     }, 
     {
         path: "",
@@ -29,6 +29,6 @@ export const routes: Routes = [
     }, 
     {
         path: "**",
-        component: Error
+        loadComponent: () => import("./pages/error/error").then((archivo) => archivo.Error)
     }
 ];
